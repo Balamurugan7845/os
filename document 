@@ -1,0 +1,41 @@
+Experiment 7
+AIM
+To develop an application using POSIX threads (pthreads) in C for concurrent execution of multiple 
+threads.
+ALGORITHM
+Algorithm for Main Function
+1. Start the program. 
+2. Declare two thread variables. 
+3. Initialize thread numbers. 
+4. Create two threads using pthread_create(). 
+5. Wait for both threads using pthread_join(). 
+6. Display completion message. 
+7. Stop the program. 
+Algorithm for Thread Function
+1. Receive thread number as argument. 
+2. Display the running thread message. 
+3. Terminate the thread. 
+PROGRAM
+#include<stdio.h>
+#include<pthread.h>
+void* msg(void* n){
+printf("Thread %d is running\n",*(int*)n);
+return NULL;
+}
+int main(){
+pthread_t t1,t2;
+int a=1,b=2;
+pthread_create(&t1,NULL,msg,&a);
+pthread_create(&t2,NULL,msg,&b);
+pthread_join(t1,NULL);
+pthread_join(t2,NULL);
+printf("Both threads finished execution\n");
+return 0;
+}
+OUTPUT
+Thread 1 is running
+Thread 2 is running
+Both threads finished execution
+RESULT
+Thus, an application using POSIX threads (pthreads) in C was successfully developed and executed for 
+concurrent thread execution
